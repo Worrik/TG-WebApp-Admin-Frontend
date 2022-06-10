@@ -12,6 +12,7 @@
     "core-js": "^3.8.3",
     "vue": "^2.6.14",
     "vue-apexcharts": "^1.6.2",
+    "vue-router": "3",
     "vuetify": "^2.6.0"
   },
   "devDependencies": {
@@ -41,7 +42,7 @@
       "parser": "@babel/eslint-parser"
     },
     "rules": {
-        "vue/multi-word-component-names": "off"
+      "vue/multi-word-component-names": "off"
     }
   },
   "browserslist": [

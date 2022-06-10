@@ -13,6 +13,8 @@
               {{ card.icon }}
             </v-icon>
             {{ card.value }}
+            <v-spacer></v-spacer>
+            <v-btn v-if="card.name == 'Users'">SHOW</v-btn>
           </v-card-title>
 
           <v-card-text>
