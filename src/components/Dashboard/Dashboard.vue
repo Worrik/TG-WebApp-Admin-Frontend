@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="dashboard">
     <Cards :cards="cards" />
     <Charts :charts="charts" />
   </div>
 </template>
 
 <script>
-import Cards from '@/components/Cards.vue'
-import Charts from '@/components/Charts.vue'
+import Cards from './Cards.vue'
+import Charts from './Charts.vue'
 
 export default {
   name: "Dashboard",
@@ -25,16 +25,9 @@ export default {
 
   methods: {
     fetchData() {
-      fetch('http://localhost:8000/data', {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: 'POST',
-          body: JSON.stringify({initData: this.auth})
-        })
-        .then(response => response.json())
-        .then(data => {
-          data.charts.forEach(chart => {
+      this.$http.get('/dashboard/')
+        .then(response => {
+          response.data.charts.forEach(chart => {
             let labels = {
               style: {colors: Array(chart.options.xaxis.categories.length)
                                 .fill('var(--tg-theme-hint-color)')}
@@ -43,8 +36,8 @@ export default {
             chart.options.yaxis = {labels: labels}
             chart.options.colors = ['var(--tg-theme-link-color)']
           })
-          this.cards = data.cards
-          this.charts = data.charts
+          this.cards = response.data.cards
+          this.charts = response.data.charts
         })
     },
   },
@@ -61,5 +54,12 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: .5rem;
+}
+.dashboard, .v-data-table {
+  background-color: var(--tg-theme-bg-color) !important;
+  color: var(--tg-theme-text-color) !important;
+}
+.v-select, .v-select__selections {
+  color: var(--tg-theme-text-color) !important;
 }
 </style>

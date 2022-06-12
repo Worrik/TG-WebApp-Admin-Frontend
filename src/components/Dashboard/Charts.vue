@@ -24,5 +24,10 @@ export default {
 </script>
 
 <style>
-
+.banner {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: .5rem;
+  color: var(--tg-theme-text-color) !important;
+}
 </style>

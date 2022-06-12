@@ -1,19 +1,16 @@
 <template>
   <v-app>
     <v-main>
-      <Dashboard />
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Dashboard from './components/Dashboard.vue'
-
 export default {
   name: 'App',
-
-  components: {
-    Dashboard
+  created() {
+    console.log(this.$route.path)
   }
 }
 </script>
@@ -23,5 +20,12 @@ export default {
 html {
   overflow-x: hidden !important;
   overflow-y: auto !important;
+  background-color: var(--tg-theme-bg-color) !important;
+}
+#app {
+  background-color: var(--tg-theme-bg-color) !important;
+}
+.primary--text {
+  color: var(--tg-theme-button-text-color) !important;
 }
 </style>
